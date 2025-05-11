@@ -6,6 +6,10 @@ public class Group {
     private String name;
     private String description;
     // 构造方法
+    public Group() {
+
+    }
+    
     public Group(int id, String name,String description) {
         this.name = name;
         this.description = description;

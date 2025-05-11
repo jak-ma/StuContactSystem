@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 // 学生通讯信息类
 public class Student {
     // 属性定义
@@ -9,14 +7,18 @@ public class Student {
     private String name;
     private String phone;
     private String email;
-    private List<Integer> groupIds;
+    private int groupId;
     // 构造方法
-    public Student(int id, String name, String phone, String email, List<Integer> groupIds) {
+    public Student() {
+
+    }
+
+    public Student(int id, String name, String phone, String email, int groupId) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.groupIds = new ArrayList<>(groupIds);
+        this.groupId = groupId;
     }
     // 编辑学生信息
     public void setId(int id) {
@@ -35,8 +37,8 @@ public class Student {
         this.email = email;
     }
 
-    public void setStuGroupIds(List<Integer> groupIds) {
-        this.groupIds = new ArrayList<>(groupIds);
+    public void setStuGroupId(int groupId) {
+        this.groupId = groupId;
     }
 
     // 获取学生信息
@@ -56,8 +58,8 @@ public class Student {
         return email;
     }
  
-    public List<Integer> getGroupIds() {
-        return new ArrayList<>(groupIds);
+    public int getGroupId() {
+        return groupId;
     }
 }
 

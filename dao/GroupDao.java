@@ -6,11 +6,11 @@ public interface GroupDao {
     // 添加组群
     void addGroup(Group group);
     // 删除组群
-    void delGroup(int groupId);
+    void delGroup(String name);
     // 修改组群信息
     void updateGroup(Group group);
     // 查看组群
-    Group findGroup(int groupId);
+    Group findGroup(String name);
     // 查看所有组群
     List<Group> findAllGroup();
 }

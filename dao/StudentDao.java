@@ -2,7 +2,6 @@ package dao;
 
 import java.util.List;
 import model.Student; 
-
 public interface StudentDao {
     // 添加学生
     void addStu(Student stu);
