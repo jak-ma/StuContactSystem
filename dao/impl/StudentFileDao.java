@@ -36,10 +36,10 @@ public class StudentFileDao implements StudentDao {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Student student = new Student();
                 student.setId(jsonObject.getInt("id"));
-                student.setStuName(jsonObject.getString("name"));
-                student.setStuPhone(jsonObject.getString("phone"));
-                student.setStuEmail(jsonObject.getString("email"));
-                student.setStuGroupId(jsonObject.getInt("groupId"));
+                student.setName(jsonObject.getString("name"));
+                student.setPhone(jsonObject.getString("phone"));
+                student.setEmail(jsonObject.getString("email"));
+                student.setGroupId(jsonObject.getInt("groupId"));
 
                 students.add(student);
             }

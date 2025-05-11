@@ -25,19 +25,19 @@ public class Student {
         this.id = id;
     }
 
-    public void setStuName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setStuPhone(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public void setStuEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setStuGroupId(int groupId) {
+    public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
 
