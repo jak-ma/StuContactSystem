@@ -107,6 +107,17 @@ public class GroupFileDao implements GroupDao {
         }
         return null;
     }
+    // new_add_func
+    public Group findGroupById(int groupId) {
+        List<Group> groups = loadGroupsFromFile();
+        for (Group group:groups) {
+            if (group.getId()==groupId) {
+                return group;
+            }
+        }
+        return null;
+    }
+
     public List<Group> findAllGroup() {
         return loadGroupsFromFile();
     }

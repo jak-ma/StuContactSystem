@@ -7,15 +7,28 @@ import gui.panel.GroupTreePanel;
 import gui.panel.StudentTablePanel;
 import gui.panel.ButtonPanel;
 import gui.panel.StatusBarPanel;
+import service.StudentService;
+import service.GroupService;
+import service.impl.StudentServiceImpl;
+import service.impl.GroupServiceImpl;
 
 public class MainFrame extends JFrame {
 
+    private StudentService studentService;
+    private GroupService groupService;
+    private StudentTablePanel studentTablePanel;
+    private GroupTreePanel groupTreePanel;
+
     public MainFrame() {
+        // 初始化服务
+        // studentService = new StudentServiceImpl(new StudentDao());
+        // groupService = new GroupServiceImpl(new GroupDao(), new StudentDao());
+
         setTitle("学生通信录管理系统");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
-        setLocationRelativeTo(null); // Center the window
-        // setResizable(false); // Optional: make window not resizable
+        setLocationRelativeTo(null); // 居中窗口
+        // setResizable(false); // 可选：使窗口不可调整大小
 
         initComponents();
 
@@ -23,29 +36,29 @@ public class MainFrame extends JFrame {
     }
 
     private void initComponents() {
-        // Layout for the main frame
+        // 主框架的布局
         setLayout(new BorderLayout());
 
-        // Create panel instances
+        // 创建面板实例
         SearchPanel searchPanel = new SearchPanel();
         searchPanel.setPreferredSize(new Dimension(getWidth(), 50));
 
-        GroupTreePanel groupTreePanel = new GroupTreePanel();
-        // groupTreePanel.setPreferredSize(new Dimension(150, getHeight())); // PreferredSize is set in GroupTreePanel
+        this.groupTreePanel = new GroupTreePanel(groupService, studentService);
+        // groupTreePanel.setPreferredSize(new Dimension(150, getHeight())); // 首选大小在 GroupTreePanel 中设置
 
-        StudentTablePanel studentTablePanel = new StudentTablePanel();
+        this.studentTablePanel = new StudentTablePanel(studentService, groupService);
 
-        ButtonPanel buttonPanel = new ButtonPanel();
+        ButtonPanel buttonPanel = new ButtonPanel(studentService, groupService, this);
         buttonPanel.setPreferredSize(new Dimension(getWidth(), 50));
         StatusBarPanel statusBarPanel = new StatusBarPanel();
-        // statusBarPanel.setPreferredSize(new Dimension(getWidth(), 30)); // PreferredSize is set in StatusBarPanel
+        // statusBarPanel.setPreferredSize(new Dimension(getWidth(), 30)); // 首选大小在 StatusBarPanel 中设置
 
-        // Add panels to the frame
+        // 将面板添加到框架
         add(searchPanel, BorderLayout.NORTH);
-        add(groupTreePanel, BorderLayout.WEST);
-        add(studentTablePanel, BorderLayout.CENTER);
+        add(this.groupTreePanel, BorderLayout.WEST);
+        add(this.studentTablePanel, BorderLayout.CENTER);
         
-        // Create a bottom panel to hold both buttonPanel and statusBarPanel
+        // 创建一个底部面板来容纳 buttonPanel 和 statusBarPanel
         JPanel southPanel = new JPanel(new BorderLayout());
         southPanel.add(buttonPanel, BorderLayout.CENTER);
         southPanel.add(statusBarPanel, BorderLayout.SOUTH);
@@ -53,11 +66,23 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Ensure UI updates are done on the Event Dispatch Thread
+        // 确保UI更新在事件调度线程上完成
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame();
             }
         });
+    }
+
+    public void refreshStudentTable() {
+        if (studentTablePanel != null) {
+            studentTablePanel.refreshTableData();
+        }
+    }
+
+    public void refreshGroupTree() {
+        if (groupTreePanel != null) {
+            groupTreePanel.refreshTreeData();
+        }
     }
 }

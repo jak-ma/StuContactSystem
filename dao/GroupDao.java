@@ -13,4 +13,6 @@ public interface GroupDao {
     Group findGroup(String name);
     // 查看所有组群
     List<Group> findAllGroup();
+    // find
+    Group findGroupById(int groupId);
 }
