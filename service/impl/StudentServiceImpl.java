@@ -8,6 +8,10 @@ import service.StudentService;
 public class StudentServiceImpl implements StudentService {
     private final StudentDao studentDao;
 
+    public StudentServiceImpl() {
+        this.studentDao=null;
+    }
+    
     public StudentServiceImpl(StudentDao studentDao) {
         this.studentDao = Objects.requireNonNull(studentDao,"StudentDao不能为空");
     }

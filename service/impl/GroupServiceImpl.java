@@ -11,10 +11,12 @@ import dao.StudentDao;
 public class GroupServiceImpl implements GroupService{
     // error
     private final GroupDao groupDao;
-    // private final StudentDao studentDao;
+    public GroupServiceImpl() {
+        this.groupDao=null;
+    }
+
     public GroupServiceImpl(GroupDao groupDao, StudentDao studentDao) {
         this.groupDao = Objects.requireNonNull(groupDao, "GroupDao 不能为 null");
-        // this.studentDao = Objects.requireNonNull(studentDao, "StudentDao 不能为 null");
     }
 
     public void addGroup(Group group) {
