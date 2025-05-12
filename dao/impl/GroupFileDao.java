@@ -14,7 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class GroupFileDao implements GroupDao {
-    private static final String FILE_PATH = "../data/groups.json";
+    private static final String FILE_PATH = "dao/data/groups.json";
     // ID自增
     private int curMaxId = 0;
     // 加载分组信息

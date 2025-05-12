@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class StudentFileDao implements StudentDao {
     // 有时间加入->文件自动迁移功能
-    private static final String FILE_PATH = "../data/students.json";
+    private static final String FILE_PATH = "dao/data/students.json";
     // ID自增
     private int curMaxId = 0;
     // 加载学生信息
@@ -89,13 +89,14 @@ public class StudentFileDao implements StudentDao {
     public void addStu(Student stu) {
         List<Student> students = loadStudentsFromFile();
         // 唯一性检查-暂时先不写逻辑-后面有时间再写
-
+        System.out.println("Before add, student count: " + students.size());
         // 自增 Id 生成
         this.curMaxId++;
         stu.setId(curMaxId);
 
         students.add(stu);
         saveStudentsToFile(students);
+        System.out.println("After add, student count: " + students.size());
     }
 
     public void delStu(String name) {

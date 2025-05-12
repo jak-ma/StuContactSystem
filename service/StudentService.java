@@ -11,5 +11,5 @@ public interface StudentService {
     void findStudentByName(String name);
     List<Student> getAllStudents();
     List<Student> getStudentsByGroupId(int groupId);
-    
+    List<Student> searchStudents(String keyword); // 添加新的搜索方法
 }
